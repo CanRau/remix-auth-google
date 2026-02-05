@@ -71,7 +71,7 @@ const googleStrategy = new GoogleStrategy(
     clientSecret: 'YOUR_CLIENT_SECRET',
     redirectURI: 'https://example.com/auth/google/callback',
   },
-  async ({ accessToken, tokens }) => {
+  async ({ request, tokens }) => {
     // Get the user data from your DB or API using the tokens and profile
     const profile = await GoogleStrategy.userProfile(tokens)
     return User.findOrCreate({ email: profile.emails[0].value })
